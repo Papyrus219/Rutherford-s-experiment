@@ -1,6 +1,11 @@
-#include "shader.hpp"
+#include "Pap_animation/shader.hpp"
 
 Shader::Shader(const char* vertex_path, const char* fragment_path)
+{
+    Load(vertex_path, fragment_path);
+}
+
+void Shader::Load(const char* vertex_path, const char* fragment_path)
 {
     std::string vertex_code{};
     std::string fragment_code{};

@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(animation)
 
 set(APP_SRC src/main.cpp
+src/lib/app.cpp
 glad/src/glad.c
 src/lib/shader.cpp
 src/lib/camera/camera.cpp

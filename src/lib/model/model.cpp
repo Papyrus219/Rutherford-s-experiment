@@ -1,4 +1,4 @@
-#include <model/model.hpp>
+#include <Pap_animation/model/model.hpp>
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
@@ -6,6 +6,11 @@
 #include "../../stb_image.h"
 
 Model::Model::Model(std::string path)
+{
+    Load_model(path);
+}
+
+void Model::Load(std::string path)
 {
     Load_model(path);
 }

@@ -8,6 +8,9 @@ class Model
 {
 public:
     Model(std::string path);
+    Model() = default;
+
+    void Load(std::string path);
 
     void Draw(Shader &shader);
 

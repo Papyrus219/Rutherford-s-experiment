@@ -2,7 +2,7 @@
 #define RENDER_OBJECT_HPP
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <objects/vertecies.hpp>
+#include <Pap_animation/objects/vertecies.hpp>
 #include <queue>
 
 enum class PHASES

@@ -1,4 +1,4 @@
-#include <model/mesh.hpp>
+#include <Pap_animation/model/mesh.hpp>
 
 Mesh::Mesh(std::vector<Vertex> verticies_, std::vector<unsigned int> indices_, std::vector<Texture> textures_): verticies{verticies_}, indices{indices_}, textures{textures_}
 {

@@ -1,6 +1,6 @@
 #include <numeric>
 #include <cmath>
-#include <objects/vertecies.hpp>
+#include <Pap_animation/objects/vertecies.hpp>
 #include <glad/glad.h>
 
 extern const std::vector<Vertex> cube_vertices;

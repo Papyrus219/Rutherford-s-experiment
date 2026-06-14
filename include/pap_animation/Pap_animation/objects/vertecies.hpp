@@ -1,7 +1,7 @@
 #ifndef VERTECIES_HPP
 #define VERTECIES_HPP
 #include <vector>
-#include <model/vertex.hpp>
+#include <Pap_animation/model/vertex.hpp>
 
 void Setup_vaos();
 void Setup_sphere_vertecies(int stack_count, int sector_count, float radius);

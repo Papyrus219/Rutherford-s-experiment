@@ -1,4 +1,4 @@
-#include <objects/render_object.hpp>
+#include <Pap_animation/objects/render_object.hpp>
 #include <cstdlib>
 #include <iostream>
 
@@ -61,7 +61,7 @@ void Render_object::Change_phase(PHASES new_phase)
 
             if(rand() % 25 < 2)
             {
-                constexpr float spread = glm::radians(75.0f);
+                constexpr float spread = glm::radians(60.0f);
 
                 float base_angle = (rand() % 2 == 0) ? std::numbers::pi / 2.0f : -std::numbers::pi / 2.0f; // +90° lub -90°
                 float offset = ((static_cast<float>(rand()) / static_cast<float>(RAND_MAX)) * 2.0f - 1.0f) * spread;

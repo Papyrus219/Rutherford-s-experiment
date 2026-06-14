@@ -1,4 +1,4 @@
-#include <camera/camera.hpp>
+#include <Pap_animation/camera/camera.hpp>
 
 Camera::Camera(glm::vec3 possition_, glm::vec3 up_, float yaw_, float pitch_): possition{possition_}, front{0.0f,0.0f, -1.0f}, world_up{up_}, yaw{yaw_}, pitch{pitch_}, movement_speed{SPEED}, mouse_sensivity{SENITIVITY}, zoom{ZOOM}
 {

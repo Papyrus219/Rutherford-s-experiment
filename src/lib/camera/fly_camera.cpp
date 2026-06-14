@@ -1,4 +1,4 @@
-#include <camera/fly_camera.hpp>
+#include <Pap_animation/camera/fly_camera.hpp>
 
 Fly_camera::Fly_camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch): Camera{position, up, yaw, pitch}
 {
