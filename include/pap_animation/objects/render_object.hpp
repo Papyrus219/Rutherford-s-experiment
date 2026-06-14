@@ -8,7 +8,8 @@
 enum class PHASES
 {
     PHASE_1,
-    PHASE_2
+    PHASE_2,
+    PHASE_3
 };
 
 struct Render_object

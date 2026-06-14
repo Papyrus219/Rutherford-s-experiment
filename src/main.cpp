@@ -16,7 +16,7 @@
 #include <model/model.hpp>
 
 constexpr int  WINDOW_WIDTH{800}, WINDOW_HEIGHT{600};
-constexpr int OBJECTS_AMOUNT{10};
+constexpr int OBJECTS_AMOUNT{60};
 Orbit_camera camera{glm::vec3(4.55f, 3.3f, 0.0f), 6.0f, 3.0f};
 
 std::array<Render_object, OBJECTS_AMOUNT> render_objects{};
@@ -67,7 +67,7 @@ int main()
     float range = end_x - start_x;
 
     float travel_time = (end_x - start_x + 1.7f) / 4.0f;
-    emission_interval = travel_time / (OBJECTS_AMOUNT - 1);
+    emission_interval = travel_time / 20;
 
     Setup_sphere_vertecies(50, 50, 0.1);
     Setup_vaos();
@@ -87,10 +87,10 @@ int main()
     Shader texture_shader{"../../shaders/texture_vertex.glsl", "../../shaders/texture_fragment.glsl"};
     Shader colot_shader{"../../shaders/texture_vertex.glsl", "../../shaders/color_fragment.glsl"};
 
-    Model dziura{"../../objects/dziura.obj"};
-    Model siatka{"../../objects/siatka.obj"};
-    Model golden{"../../objects/golden.obj"};
-    Model lancher{"../../objects/lancher.obj"};
+    Model dziura{"../../objects/dziura/dziura.obj"};
+    Model siatka{"../../objects/siatka/siatka.obj"};
+    Model golden{"../../objects/golden/golden.obj"};
+    Model lancher{"../../objects/lancher/lancher.obj"};
 
     unsigned int texture{};
     glGenTextures(1, &texture);
@@ -123,6 +123,7 @@ int main()
     glfwSetScrollCallback(window, Scroll_callback);
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
+    last_frame = glfwGetTime();
     while(!glfwWindowShouldClose(window))
     {
         float current_frame = glfwGetTime();
@@ -130,6 +131,24 @@ int main()
         last_frame = current_frame;
 
         ProcessInput(window);
+
+        for(auto & object : render_objects)
+        {
+            object.Update(delta_time);
+        }
+
+        emission_timer += delta_time;
+
+        if(emission_timer >= emission_interval)
+        {
+            emission_timer -= emission_interval;
+            if(!Render_object::inactive_objects.empty())
+            {
+                Render_object::inactive_objects.front()->active = true;
+                Render_object::inactive_objects.front()->Change_phase(PHASES::PHASE_1);
+                Render_object::inactive_objects.pop();
+            }
+        }
 
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -209,24 +228,6 @@ int main()
 
         glfwSwapBuffers(window);
         glfwPollEvents();
-
-        for(auto & object : render_objects)
-        {
-            object.Update(delta_time);
-        }
-
-        emission_timer += delta_time;
-
-        if(emission_timer >= emission_interval)
-        {
-            emission_timer -= emission_interval;
-            if(!Render_object::inactive_objects.empty())
-            {
-                Render_object::inactive_objects.front()->active = true;
-                Render_object::inactive_objects.front()->Change_phase(PHASES::PHASE_1);
-                Render_object::inactive_objects.pop();
-            }
-        }
     }
 
     glfwTerminate();
