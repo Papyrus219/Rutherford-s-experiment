@@ -1,11 +1,16 @@
 #ifndef APP_HPP
 #define APP_HPP
 
+#include <map>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <Pap_animation/objects/render_object.hpp>
+#include <ft2build.h>
+#include FT_FREETYPE_H
+#include <Pap_animation/objects/molecule.hpp>
 #include <Pap_animation/camera/orbit_camera.hpp>
 #include <Pap_animation/model/model.hpp>
+
+struct Character;
 
 class App
 {
@@ -19,10 +24,11 @@ private:
 
     void Update_logic();
     void Render_frame();
+    void RenderText(Shader &s, std::string text, float x, float y, float scale, glm::vec3 color);
 
     static void Framebuffer_size_callback(GLFWwindow * window, int width, int heigtht);
 
-    void ProcessInput(GLFWwindow * window);
+    void ProcessInput();
 
     static constexpr int  WINDOW_WIDTH{800}, WINDOW_HEIGHT{600};
     static constexpr int OBJECTS_AMOUNT{60};
@@ -31,18 +37,25 @@ private:
 
     Shader texture_shader{};
     Shader colot_shader{};
+    Shader text_shader{};
 
     Model dziura{};
     Model siatka{};
     Model golden{};
     Model lancher{};
 
+    FT_Library ft{};
+    FT_Face face{};
+    std::map<char, Character> Characters;
+
     unsigned int texture{};
 
     Orbit_camera camera{glm::vec3(4.55f, 3.3f, 0.0f), 6.0f, 3.0f};
 
 
-    std::array<Render_object, OBJECTS_AMOUNT> render_objects{};
+    bool show_labels{};
+
+    std::array<Molecule, OBJECTS_AMOUNT> molecules{};
 
     float last_frame{};
     float delta_time{};
@@ -51,6 +64,14 @@ private:
 
     float start_x{1.6f};
     float end_x{6.3f};
+};
+
+struct Character
+{
+    unsigned int TextureID;
+    glm::ivec2 Size;
+    glm::ivec2 Bearing;
+    long Advance;
 };
 
 #endif // APP_HPP

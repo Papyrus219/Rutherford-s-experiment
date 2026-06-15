@@ -1,5 +1,5 @@
-#ifndef RENDER_OBJECT_HPP
-#define RENDER_OBJECT_HPP
+#ifndef MOLECULE_HPP
+#define MOLECULE_HPP
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <Pap_animation/objects/vertecies.hpp>
@@ -12,7 +12,7 @@ enum class PHASES
     PHASE_3
 };
 
-struct Render_object
+struct Molecule
 {
     glm::vec3 position = {0.0f, 0.0f, 0.0f};
     glm::vec3 rotation = {0.0f, 0.0f, 0.0f};
@@ -42,10 +42,10 @@ struct Render_object
     unsigned int vao{};
     unsigned int indices_amount{};
 
-    static std::queue<Render_object *> inactive_objects;
+    static std::queue<Molecule *> inactive_objects;
 private:
 
     PHASES phase{PHASES::PHASE_1};
 };
 
-#endif //RENDER_OBJECT_HPP
+#endif //MOLECULE_HPP

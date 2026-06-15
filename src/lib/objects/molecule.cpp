@@ -1,10 +1,10 @@
-#include <Pap_animation/objects/render_object.hpp>
+#include <Pap_animation/objects/molecule.hpp>
 #include <cstdlib>
 #include <iostream>
 
-std::queue<Render_object *> Render_object::inactive_objects{};
+std::queue<Molecule *> Molecule::inactive_objects{};
 
-void Render_object::Update(float delta_time)
+void Molecule::Update(float delta_time)
 {
     if(!active) return;
 
@@ -46,7 +46,7 @@ void Render_object::Update(float delta_time)
 
 }
 
-void Render_object::Change_phase(PHASES new_phase)
+void Molecule::Change_phase(PHASES new_phase)
 {
     switch(new_phase)
     {
@@ -63,7 +63,7 @@ void Render_object::Change_phase(PHASES new_phase)
             {
                 constexpr float spread = glm::radians(60.0f);
 
-                float base_angle = (rand() % 2 == 0) ? std::numbers::pi / 2.0f : -std::numbers::pi / 2.0f; // +90° lub -90°
+                float base_angle = (rand() % 2 == 0) ? std::numbers::pi / 2.0f : -std::numbers::pi / 2.0f;
                 float offset = ((static_cast<float>(rand()) / static_cast<float>(RAND_MAX)) * 2.0f - 1.0f) * spread;
                 float angle = base_angle + offset;
 

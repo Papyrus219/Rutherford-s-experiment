@@ -20,11 +20,11 @@ void Orbit_camera::Process_keyboard(Camera_movement direction, float delta_time)
 {
     if (direction == Camera_movement::LEFT)  current_angle += 1.0f * delta_time;
     if (direction == Camera_movement::RIGHT) current_angle -= 1.0f * delta_time;
-    if (direction == Camera_movement::BACKWARD) zoom += 6.0f * delta_time;
-    if (direction == Camera_movement::FORWARD) zoom -= 6.0f * delta_time;
+    if (direction == Camera_movement::BACKWARD) height -= 5.0f * delta_time;
+    if (direction == Camera_movement::FORWARD) height += 5.0f * delta_time;
 
-    if(zoom < 30.0f) zoom = 30.0f;
-    if(zoom > 45.0f) zoom = 45.0f;
+    if(height < -1.0f) height = -1.0f;
+    if(height > 4.0f) height = 4.0f;
 
     Update_orbit();
 }

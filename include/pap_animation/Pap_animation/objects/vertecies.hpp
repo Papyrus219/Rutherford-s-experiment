@@ -16,4 +16,7 @@ extern unsigned int sphere_VBO;
 extern unsigned int sphere_EBO;
 extern unsigned int sphere_indices_amount;
 
+extern unsigned int text_VAO;
+extern unsigned int text_VBO;
+
 #endif //VERTECIES_HPP
