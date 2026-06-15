@@ -249,7 +249,6 @@ void App::Setup_opengl()
 
     int framebufferWidth, framebufferHeight;
     glfwGetFramebufferSize(window, &framebufferWidth, &framebufferHeight);
-    glfwSetInputMode(window, GLFW_STICKY_KEYS, GLFW_TRUE);
 
     glViewport(0, 0, framebufferWidth, framebufferHeight);
 
@@ -294,8 +293,6 @@ void App::Setup_opengl()
     stbi_image_free(data);
 
     glfwSetFramebufferSizeCallback(window, Framebuffer_size_callback);
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
 
     if(FT_Init_FreeType(&ft))
     {
