@@ -30,7 +30,7 @@ private:
 
     void ProcessInput();
 
-    static constexpr int  WINDOW_WIDTH{800}, WINDOW_HEIGHT{600};
+    static constexpr int  WINDOW_WIDTH{1200}, WINDOW_HEIGHT{900};
     static constexpr int OBJECTS_AMOUNT{60};
 
     GLFWwindow * window{};
