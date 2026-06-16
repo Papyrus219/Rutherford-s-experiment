@@ -141,7 +141,7 @@ void App::Render_frame()
         float screenX = (clip.x * 0.5f + 0.5f) * 800.0f;
         float screenY = (clip.y * 0.5f + 0.5f) * 600.0f;
 
-        RenderText(text_shader, "Golden foil", screenX, screenY, 0.5f,
+        RenderText(text_shader, "Zlota folia", screenX, screenY, 0.5f,
                 glm::vec3(1.0, 1.0f, 1.0f));
 
         clip = projection * camera.Get_view_matrix() * glm::vec4(8.0f, 2.3f, -0.5f, 1.0f);
@@ -150,8 +150,8 @@ void App::Render_frame()
         screenX = (clip.x * 0.5f + 0.5f) * 800.0f;
         screenY = (clip.y * 0.5f + 0.5f) * 600.0f;
 
-        RenderText(text_shader, "Fluororestrictive screen", screenX, screenY, 0.5f,
-                glm::vec3(1.0, 1.0f, 1.0f));
+        RenderText(text_shader, "Ekran fluorescencyjny", screenX, screenY, 0.5f,
+                glm::vec3(0.4, 0.3f, 1.0f));
 
         clip = projection * camera.Get_view_matrix() * glm::vec4(2.25f, 2.3f, -0.5f, 1.0f);
         clip /= clip.w;
@@ -159,8 +159,8 @@ void App::Render_frame()
         screenX = (clip.x * 0.5f + 0.5f) * 800.0f;
         screenY = (clip.y * 0.5f + 0.5f) * 600.0f;
 
-        RenderText(text_shader, "Radiation source", screenX, screenY, 0.5f,
-                glm::vec3(1.0, 1.0f, 1.0f));
+        RenderText(text_shader, "Zrodlo radioaktywne", screenX, screenY, 0.5f,
+                glm::vec3(0.3, 1.0f, 0.3f));
 
         for(auto & molecule : molecules)
         {
@@ -171,8 +171,8 @@ void App::Render_frame()
             screenX = (clip.x * 0.5f + 0.5f) * 800.0f;
             screenY = (clip.y * 0.5f + 0.5f) * 600.0f;
 
-            RenderText(text_shader, "alpha particle", screenX, screenY, 0.25f,
-                   glm::vec3(1.0, 1.0f, 1.0f));
+            RenderText(text_shader, "Czasteczka Alfa", screenX, screenY, 0.25f,
+                   glm::vec3(1.0, 0.3f, 0.3f));
         }
 
         glEnable(GL_DEPTH_TEST);
@@ -232,7 +232,7 @@ void App::Setup_opengl()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Rutherford Experiment", NULL, NULL);
+    window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Eksperyment Rutherforda", NULL, NULL);
     if(window == NULL)
     {
         std::cerr << "Failed to create GLFW window\n";
